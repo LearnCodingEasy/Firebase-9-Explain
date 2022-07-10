@@ -63,11 +63,8 @@ function showMovies(movies) {
     let movieEl = document.createElement("div");
     movieEl.classList.add("movie");
     movieEl.innerHTML = `
-    <img
-  src="${imgUrl}"
-  alt="${title}"
-/>
-<div class="title">${title}</div>
+    <img src="${imgUrl}" alt="${title}" />
+    <div class="title">${title}</div>
     `;
     inner.appendChild(movieEl);
   });

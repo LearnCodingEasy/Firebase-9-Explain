@@ -2,7 +2,17 @@
 body {
   border: 0.5rem solid transparent;
   font-family: "poppins", sans-serif;
+  background-color: #eaf0f2;
 }
+::-webkit-scrollbar {
+  width: 1rem;
+  background-color: #333;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #bbbbbb;
+  border-radius: 0.25rem;
+}
+
 .header {
   display: flex;
   justify-content: center;
@@ -39,11 +49,12 @@ body {
     .inner {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 10px 10px;
+      gap: 50px 50px;
       .movie {
         padding: 1rem;
         overflow: hidden;
         background-color: #e9e9e9;
+        background-color: #bbb;
         border-radius: 20px;
         height: 380px;
         display: flex;
