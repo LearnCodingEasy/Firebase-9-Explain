@@ -38,11 +38,102 @@ body {
 .main {
   margin: 2rem 0;
   padding: 1rem 0;
+  .form-add {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 50px 50px;
+    margin: 0 2rem;
+    .wrapper-add,
+    .wrapper-delete {
+      border: 0.5rem solid rgb(233, 233, 233);
+      padding: 1rem;
+      background-color: #bbbbbb;
+      border-radius: 10px;
+      form {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+        label {
+          font-weight: bold;
+        }
+        input {
+          display: block;
+          width: 100%;
+          padding: 0.375rem 0.75rem;
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 1.5;
+          color: #212529;
+          background-color: #fff;
+          background-clip: padding-box;
+          border: 1px solid #ced4da;
+          appearance: none;
+          border-radius: 0.375rem;
+          transition: border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out;
+          margin: 1rem 0;
+        }
+        button.btn-primary {
+          color: #fff;
+          background-color: #0d6efd;
+          border-color: #0d6efd;
+          text-transform: none;
+          margin: 0;
+          font-family: inherit;
+          cursor: pointer;
+          transition: none;
+          display: inline-block;
+          font-weight: 400;
+          line-height: 1.5;
+          text-align: center;
+          text-decoration: none;
+          vertical-align: middle;
+          cursor: pointer;
+          user-select: none;
+          padding: 0.375rem 0.75rem;
+          font-size: 1rem;
+          border-radius: 0.25rem;
+          transition: color 0.15s ease-in-out,
+            background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out;
+        }
+        button.btn-danger {
+          color: #fff;
+          background-color: #dc3545;
+          border-color: #dc3545;
+          text-transform: none;
+          margin: 0;
+          font-family: inherit;
+          cursor: pointer;
+          transition: none;
+          display: inline-block;
+          font-weight: 400;
+          line-height: 1.5;
+          text-align: center;
+          text-decoration: none;
+          vertical-align: middle;
+          cursor: pointer;
+          user-select: none;
+          padding: 0.375rem 0.75rem;
+          font-size: 1rem;
+          border-radius: 0.25rem;
+          transition: color 0.15s ease-in-out,
+            background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out;
+        }
+      }
+    }
+  }
   .main-title {
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: capitalize;
+    margin: 4rem;
+    font-weight: bold;
   }
   .wrapper {
     padding: 2rem 0;

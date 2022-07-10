@@ -10,6 +10,13 @@
     <title>Firebase 9</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/css/bootstrap.min.css"
+      integrity="sha512-NZ19NrT58XPK5sXqXnnvtf9T5kLXSzGQlVZL9taZWeTBtXoN3xIfTdxbkQh6QSoJfJgpojRqMfhyqBAAEeiXcA=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -22,12 +29,36 @@
     <header class="header">Firebase<span class="header-number">9</span></header>
 
     <main class="main">
+      <div class="form-add">
+        <div class="wrapper-add">
+          <form class="add">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" required />
+            <label for="imgUrl">Image Url:</label>
+            <input type="text" name="imgUrl" id="imgUrl" required />
+            <button class="btn-primary btn-add">Add A New Movie</button>
+          </form>
+        </div>
+        <div class="wrapper-delete">
+          <form class="form-delete">
+            <label for="imgUrl">Document Id:</label>
+            <input type="text" name="id" id="id" required />
+            <button class="btn-danger btn-delete">Delete A Movie</button>
+          </form>
+        </div>
+      </div>
       <h2 class="main-title">favorite movies</h2>
       <div class="wrapper">
         <div class="inner" id="inner"></div>
       </div>
     </main>
 
+    <!-- Bootstrap -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.min.js"
+      integrity="sha512-Pv/SmxhkTB6tWGQWDa6gHgJpfBdIpyUy59QkbshS1948GRmj6WgZz18PaDMOqaEyKLRAvgil7sx/WACNGE4Txw=="
+      crossorigin="anonymous"
+    ></script>
     <script src="js/script.js" async defer></script>
   </body>
 </html>
