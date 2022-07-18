@@ -83,7 +83,7 @@ initializeApp(firebaseConfig);
 const Database = getFirestore();
 
 // Call Object From The Firebase To Initialize Services ( Auth )
-const auth = getAuth();
+const Auth = getAuth();
 
 // Get The Collection From Database by Collection Name
 // احصل على المجموعة من قاعدة البيانات حسب اسم المجموعة
@@ -215,7 +215,7 @@ signupForm.addEventListener("submit", (e) => {
   const email = signupForm.email.value;
   const password = signupForm.password.value;
 
-  createUserWithEmailAndPassword(auth, email, password)
+  createUserWithEmailAndPassword(Auth, email, password)
     .then((cred) => {
       console.log("user created:", cred.user);
       signupForm.reset();
