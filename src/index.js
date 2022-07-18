@@ -61,6 +61,19 @@ import { getAuth } from "firebase/auth";
 // استيراد  create User With Email And Password
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
+// Import sign Out
+// استيراد  sign Out
+import { signOut } from "firebase/auth";
+
+// Import sign In With Email And Password
+// استيراد  sign In With Email And Password
+import { signInWithEmailAndPassword } from "firebase/auth";
+
+// onAuthStateChanged
+// Import on Auth State Changed
+// استيراد  on Auth State Changed
+import { onAuthStateChanged } from "firebase/auth";
+
 // Config Project
 // تكوين المشروع ( بيانات المشروع )
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -209,18 +222,55 @@ updateForm.addEventListener("submit", (e) => {
 
 // signing users up
 const signupForm = document.querySelector(".signup");
+const userName = document.getElementById("userName");
 signupForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
+  // hossam@yahoo.com
   const email = signupForm.email.value;
   const password = signupForm.password.value;
 
   createUserWithEmailAndPassword(Auth, email, password)
     .then((cred) => {
       console.log("user created:", cred.user);
+      userName.innerHTML = cred.user.email;
       signupForm.reset();
     })
     .catch((err) => {
       console.log(err.message);
     });
+});
+
+// logging  out
+const logoutButton = document.querySelector(".logout");
+logoutButton.addEventListener("click", () => {
+  signOut(Auth)
+    .then(() => {
+      console.log("user signed out");
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
+// logging in
+const loginForm = document.querySelector(".login");
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const email = loginForm.email.value;
+  const password = loginForm.password.value;
+
+  signInWithEmailAndPassword(Auth, email, password)
+    .then((cred) => {
+      console.log("user logged in:", cred.user);
+      loginForm.reset();
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
+// subscribing to auth changes
+onAuthStateChanged(auth, (user) => {
+  console.log("user status changed:", user);
 });

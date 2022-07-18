@@ -34,7 +34,10 @@
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
-    <header class="header">Firebase<span class="header-number">9</span></header>
+    <header class="header">
+      Firebase<span class="header-number">9</span>
+      <span id="userName"></span>
+    </header>
 
     <main class="main">
       <div class="form">
@@ -73,15 +76,30 @@
           </form>
         </div>
         <div class="wrapper-signup">
-          <h2 class="title">Firebase Auth</h2>
+          <h2 class="title">sign up</h2>
 
-<form class="signup">
+          <form class="signup">
+            <label for="email">email:</label>
+            <input type="email" name="email" />
+            <label for="password">password:</label>
+            <input type="password" name="password" />
+            <button class="btn-primary btn-add">signup</button>
+          </form>
+        </div>
+        <div class="wrapper-signOut">
+          <h2 class="title">login</h2>
+<form class="login">
   <label for="email">email:</label>
   <input type="email" name="email" />
   <label for="password">password:</label>
   <input type="password" name="password" />
-  <button class="btn-primary btn-add">signup</button>
+  <button class="btn-primary btn-add">login</button>
 </form>
+        </div>
+        <div class="wrapper-logOut">
+          <h2 class="title">logout</h2>
+
+          <button class="logout btn-primary btn-add">logout</button>
         </div>
       </div>
       <h2 class="main-title">favorite movies</h2>
