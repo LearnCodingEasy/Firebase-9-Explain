@@ -12,11 +12,54 @@ import { collection } from "firebase/firestore";
 
 // Import Data Of Collection
 // استيراد بيانات المجموعة
-import { getDocs } from "firebase/firestore";
+// import { getDocs } from "firebase/firestore";
+
+// Import Object onSnapshot
+import { onSnapshot } from "firebase/firestore";
 
 // Import Object Add Doc
 //  Object Add Doc استيراد
 import { addDoc } from "firebase/firestore";
+
+// Import Object delete Doc
+//  Object delete Doc استيراد
+import { deleteDoc } from "firebase/firestore";
+
+// Import Object Doc
+//  Object Doc استيراد
+import { doc } from "firebase/firestore";
+
+// Import Object Query
+//  Object Query استيراد
+import { query } from "firebase/firestore";
+
+// Import Object Where
+//  Object Where استيراد
+import { where } from "firebase/firestore";
+
+// Import Object orderBy
+//  Object orderBy استيراد
+import { orderBy } from "firebase/firestore";
+
+// Import Object serverTimestamp
+//  Object serverTimestamp استيراد
+import { serverTimestamp } from "firebase/firestore";
+
+// Import Data Of Collection Element
+// استيراد بيانات عنصر من المجموعة
+import { getDoc } from "firebase/firestore";
+
+// Import Object updateDoc
+// Object updateDoc استيراد
+import { updateDoc } from "firebase/firestore";
+
+// Import Auth
+// استيراد  المصادقة
+import { getAuth } from "firebase/auth";
+
+// Import create User With Email And Password
+// استيراد  create User With Email And Password
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 // Config Project
 // تكوين المشروع ( بيانات المشروع )
@@ -39,6 +82,9 @@ initializeApp(firebaseConfig);
 // تهيئة خدمات قاعدة بيانات
 const Database = getFirestore();
 
+// Call Object From The Firebase To Initialize Services ( Auth )
+const auth = getAuth();
+
 // Get The Collection From Database by Collection Name
 // احصل على المجموعة من قاعدة البيانات حسب اسم المجموعة
 // collection ref
@@ -46,19 +92,44 @@ const colRef = collection(Database, "movies");
 
 // Fetching Data
 // جلب البيانات
-getDocs(colRef)
-  .then((snapshot) => {
-    console.log("snapshot: ", snapshot.docs);
-    let movies = [];
-    snapshot.docs.forEach((doc) => {
-      movies.push({ ...doc.data(), id: doc.id });
-    });
-    console.log("movies: ", movies);
-    showMovies(movies);
-  })
-  .catch((err) => {
-    console.log(err.message);
+// getDocs(colRef)
+//   .then((snapshot) => {
+//     console.log("snapshot: ", snapshot.docs);
+//     let movies = [];
+//     snapshot.docs.forEach((doc) => {
+//       movies.push({ ...doc.data(), id: doc.id });
+//     });
+//     console.log("movies: ", movies);
+//     showMovies(movies);
+//   })
+//   .catch((err) => {
+//     console.log(err.message);
+//   });
+
+let SearchMovieForm = document.querySelector(".Search");
+
+SearchMovieForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let inputSearch = document.getElementById("InputSearch");
+  console.log("inputSearch: ", inputSearch.value);
+});
+// queries
+// استفسارات
+const queries = query(colRef, orderBy("createdAt"));
+// const queries = query(colRef, where("title", "==", "Ip"));
+// const queries = query(colRef, where("title", "==", InputSearch.value));
+// const queries = query( colRef, where( "imgUrl", "==", "https://images.hdqwalls.com/download/ip-man-4-the-finale-q0-1280x800.jpg" ) , orderBy('createdAt'));
+
+// realtime collection data
+onSnapshot(queries, (snapshot) => {
+  console.log("snapshot: ", snapshot.docs);
+  let movies = [];
+  snapshot.docs.forEach((doc) => {
+    movies.push({ ...doc.data(), id: doc.id });
   });
+  showMovies(movies);
+  console.log("movies: ", movies);
+});
 
 let inner = document.getElementById("inner");
 function showMovies(movies) {
@@ -86,18 +157,11 @@ addMovieForm.addEventListener("submit", (e) => {
   addDoc(colRef, {
     title: addMovieForm.title.value,
     imgUrl: addMovieForm.imgUrl.value,
+    createdAt: serverTimestamp(),
   }).then(() => {
     addMovieForm.reset();
   });
 });
-
-// Import Object delete Doc
-//  Object delete Doc استيراد
-import { deleteDoc } from "firebase/firestore";
-
-// Import Object Doc
-//  Object Doc استيراد
-import { doc } from "firebase/firestore";
 
 // 4
 // Deleting Documents
@@ -116,3 +180,47 @@ window.onload = function () {
     console.log("iconDelete: ", iconDelete);
   }, 10000);
 };
+
+// fetching a single document (& realtime)
+const docRef = doc(Database, "movies", "XmfuWkORdzhGtifMIqnj");
+
+// getDoc(docRef)
+//   .then(doc => {
+//     console.log(doc.data(), doc.id)
+//   })
+
+onSnapshot(docRef, (doc) => {
+  console.log(doc.data(), doc.id);
+});
+
+// updating a document
+const updateForm = document.querySelector(".update");
+updateForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let docRef = doc(Database, "movies", updateForm.id.value);
+
+  updateDoc(docRef, {
+    title: "updated title",
+  }).then(() => {
+    updateForm.reset();
+  });
+});
+
+// signing users up
+const signupForm = document.querySelector(".signup");
+signupForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const email = signupForm.email.value;
+  const password = signupForm.password.value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((cred) => {
+      console.log("user created:", cred.user);
+      signupForm.reset();
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
