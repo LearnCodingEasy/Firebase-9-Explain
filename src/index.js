@@ -69,7 +69,6 @@ import { signOut } from "firebase/auth";
 // استيراد  sign In With Email And Password
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-// onAuthStateChanged
 // Import on Auth State Changed
 // استيراد  on Auth State Changed
 import { onAuthStateChanged } from "firebase/auth";
@@ -270,7 +269,12 @@ loginForm.addEventListener("submit", (e) => {
     });
 });
 
-// subscribing to auth changes
-onAuthStateChanged(auth, (user) => {
+// subscribing to Auth changes
+onAuthStateChanged(Auth, (user) => {
   console.log("user status changed:", user);
+  console.log("user displayName:", user.displayName);
+  console.log("user email:", user.email);
+  console.log("user uid:", user.uid);
+  console.log("user phoneNumber:", user.phoneNumber);
+  console.log("user photoURL:", user.photoURL);
 });
