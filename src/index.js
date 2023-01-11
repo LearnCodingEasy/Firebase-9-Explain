@@ -77,13 +77,13 @@ import { onAuthStateChanged } from "firebase/auth";
 // تكوين المشروع ( بيانات المشروع )
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBV9Kfe8Yrn1J2kt6T-rjjZntDIiXLEz_I",
-  authDomain: "fir-9-explain-8b6e5.firebaseapp.com",
-  projectId: "fir-9-explain-8b6e5",
-  storageBucket: "fir-9-explain-8b6e5.appspot.com",
-  messagingSenderId: "989554164830",
-  appId: "1:989554164830:web:c0f33ecee4d2e76bade0cf",
-  measurementId: "G-G67JSPDLEL",
+  apiKey: "AIzaSyAXP3ctw6rgdgWVAH23VfdAZwoujAiqC8c",
+  authDomain: "fir-9-674b0.firebaseapp.com",
+  projectId: "fir-9-674b0",
+  storageBucket: "fir-9-674b0.appspot.com",
+  messagingSenderId: "197491391133",
+  appId: "1:197491391133:web:9040864aa1fbb1baf5b274",
+  measurementId: "G-CPJBMRX5TZ"
 };
 
 // initialize firebase App
